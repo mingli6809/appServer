@@ -30,7 +30,7 @@ dotenv.config();
 const app = express()
 // const port = 5000
 var pokeModel = null;
-
+app.use(cors({exposedHeaders:['auth-token-access','auth-token-refresh']}))
 const start = asyncWrapper(async () => {
   await connectDB({ "drop": false });
   const pokeSchema = await getTypes();
@@ -70,7 +70,8 @@ const { setTheUsername } = require("whatwg-url")
 // app.use(morgan("tiny"))
 app.use(morgan(":method"))
 
-app.use(cors({exposedHeaders:['auth-token-access','auth-token-refresh']}))
+
+// app.use(cors)
 
 
 const authUser = asyncWrapper(async (req, res, next) => {
