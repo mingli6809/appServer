@@ -30,7 +30,8 @@ dotenv.config();
 const app = express()
 // const port = 5000
 var pokeModel = null;
-app.use(cors({exposedHeaders:['auth-token-access','auth-token-refresh']}))
+// app.use(cors({exposedHeaders:['auth-token-access','auth-token-refresh']}))
+app.use(cors())
 const start = asyncWrapper(async () => {
   await connectDB({ "drop": false });
   const pokeSchema = await getTypes();
